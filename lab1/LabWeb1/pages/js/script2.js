@@ -100,16 +100,3 @@ radioButtons.forEach(radio => {
             console.error('Fetch error:', error);
         });
     });
-
-
-
-function changeColor() {
-    const input = document.getElementById('resultStatus');
-    const value = input.value;
-
-    if (value === 'Попал') {
-        input.classList.add('green');
-    } else if (value === 'Не попал') {
-        input.classList.add('red');
-    }
-}
