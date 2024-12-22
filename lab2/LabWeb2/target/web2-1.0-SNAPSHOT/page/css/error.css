@@ -1,0 +1,14 @@
+.radio-error {
+    border: 2px solid red;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#graph {
+    border: 1px solid transparent;
+    transition: border 0.2s ease-in-out;
+}
+
+#graph.error {
+    border: 2px solid red;
+}

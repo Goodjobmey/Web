@@ -1,0 +1,36 @@
+.area, .table{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10%
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+.loc-button {
+    text-decoration: none;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    font-family: var(--Text);
+    margin-left: 48%;
+    margin-bottom: 5%;
+}
+
+.button{
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-family: var(--Text);
+    width: 200px;
+    font-size: 18px;
+    padding: 12px;
+    margin: 36px;
+    margin-left: 45%
+}
