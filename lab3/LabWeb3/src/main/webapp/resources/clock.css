@@ -1,0 +1,49 @@
+:root{
+    --Text: FreeMono;
+
+    --NWhite: #f4f4f4;
+    --NBlack: #333;
+}
+
+.clock_container {
+    align-items: center;
+    margin-top: 12%;
+    margin-bottom: 12%;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 0px 20px #00000027;
+    font-family: var(--Text);
+    text-align: center;
+    width: 400px;
+    margin-left: 37% ;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+#clock {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: var(--NBlack);;
+    text-shadow: white;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes glow {
+    from { text-shadow: var(--NBlack); }
+    to { text-shadow: 0 0 7px #050505; }
+}

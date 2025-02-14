@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+    <title>JSF Лабораторная</title>
+    <link rel="stylesheet" href="resources/area.css"/>
+    <link rel="stylesheet" href="resources/common.css"/>
+    <link rel="stylesheet" href="resources/clock.css"/>
+
+    <script>
+        function updateClock() {
+            document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+        }
+        setInterval(updateClock, 9000); // Обновление каждые 9 секунд
+    </script>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <nav class="navigation">
+        <div class="container">
+            <img class="Logo" src="resources/logoITMO.png" alt="ITMO Logo" width="10%"/>
+            <h1>Веб-программирование: Лабораторная работа №3</h1>
+            <p>Кузьмина Ольга Игоревна 412986 вариант: 944</p>
+            <noscript>Включите JS пожалуйста :)</noscript>
+        </div>
+    </nav>
+</header>
+
+<div class="clock_container">
+
+    <h2>Текущее время:</h2>
+    <div id="clock">
+        <h:outputText value="#{clockBean.currentTime}" />
+    </div>
+    <h:link value="Перейти на основную страничку" outcome="index"/>
+</div>
+
+
+<!-- Footer -->
+<footer>
+    <p>Разработано в рамках курса "Веб-программирование"</p>
+    <p>Университет ИТМО, осень 2024</p>
+    <img class="Logo" src="resources/win.gif" alt="win" width="20%"/>
+</footer>
+
+</body>
+
+</html>

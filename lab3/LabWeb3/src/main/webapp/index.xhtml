@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-Ru"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>MainPage</title>
+    <link rel="stylesheet" href="resources/area.css"/>
+    <link rel="stylesheet" href="resources/common.css"/>
+    <link rel="stylesheet" href="resources/error.css"/>
+</h:head>
+
+<h:body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navigation">
+            <div class="container">
+                <img class="Logo" src="resources/logoITMO.png" alt="ITMO Logo" width="10%"/>
+                <h1>Веб-программирование: Лабораторная работа №3</h1>
+                <p>Кузьмина Ольга Игоревна 412986 вариант: 944</p>
+                <noscript>Включите JS пожалуйста :)</noscript>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Form -->
+    <h:form id="mainForm">
+        <div class="area">
+
+            <!-- Graph -->
+            <div class="graph">
+
+                <h:inputHidden id="hiddenX" value="#{xCoordinateBean.x}" />
+                <h:inputHidden id="hiddenY" value="#{yCoordinateBean.y}" />
+                <h:inputHidden id="hiddenR" value="#{rCoordinateBean.r}" />
+
+                <svg id="graph" width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+                    <g id="static-layer">
+                        <!-- Оси -->
+                        <line x1="0" y1="300" x2="800" y2="300" stroke="black" />
+                        <line x1="300" y1="0" x2="300" y2="600" stroke="black" />
+                        <!-- Деления -->
+                        <!-- X -->
+                        <line x1="400" y1="295" x2="400" y2="305" stroke="black" />
+                        <text x="395" y="290" font-size="12">R</text>
+                        <line x1="350" y1="295" x2="350" y2="305" stroke="black" />
+                        <text x="345" y="290" font-size="12">R/2</text>
+                        <line x1="250" y1="295" x2="250" y2="305" stroke="black" />
+                        <text x="235" y="290" font-size="12">-R/2</text>
+                        <line x1="200" y1="295" x2="200" y2="305" stroke="black" />
+                        <text x="195" y="290" font-size="12">-R</text>
+                        <!-- Y -->
+                        <line x1="295" y1="200" x2="305" y2="200" stroke="black" />
+                        <text x="310" y="205" font-size="12">R</text>
+                        <line x1="295" y1="250" x2="305" y2="250" stroke="black" />
+                        <text x="310" y="255" font-size="12">R/2</text>
+                        <line x1="295" y1="350" x2="305" y2="350" stroke="black" />
+                        <text x="310" y="355" font-size="12">-R/2</text>
+                        <line x1="295" y1="400" x2="305" y2="400" stroke="black" />
+                        <text x="310" y="405" font-size="12">-R</text>
+                    </g>
+
+                    <g id="dynamic-layer">
+                        Фигуры
+                        <polygon points="300,300 300,350 200,300" fill="#333" fill-opacity="0.5" stroke="#333" />
+                        <polygon points="300,300 300,250 400,250 400,300" fill="#333" fill-opacity="0.5" stroke="#333" />
+                        <path d="M300,300 400,300 A100,100 0,0,1 300,400 Z" fill="#333" fill-opacity="0.5" stroke="#333" />
+                    </g>
+                </svg>
+            </div>
+
+            <h:outputScript id="graphScript">
+                updateDynamicLayer(#{rCoordinateBean.r});
+            </h:outputScript>
+
+            <!-- Inputs -->
+            <div class="container">
+
+                <!-- X input -->
+                <div class="input-group">
+                    <label for="x">Выберите X:</label>
+                    <h:selectOneRadio id="x" value="#{xCoordinateBean.x}" >
+                        <f:selectItem itemValue="-3" itemLabel="-3"/>
+                        <f:selectItem itemValue="-2" itemLabel="-2"/>
+                        <f:selectItem itemValue="-1" itemLabel="-1"/>
+                        <f:selectItem itemValue="0" itemLabel="0"/>
+                        <f:selectItem itemValue="1" itemLabel="1"/>
+                        <f:selectItem itemValue="2" itemLabel="2"/>
+                        <f:selectItem itemValue="3" itemLabel="3"/>
+                        <f:selectItem itemValue="4" itemLabel="4"/>
+                        <f:selectItem itemValue="5" itemLabel="5"/>
+                    </h:selectOneRadio>
+                </div>
+
+                <!-- Y input -->
+                <div class="input-group">
+                    <label for="y">Введите Y:</label>
+                    <h:inputText id="y" styleClass="inputY" value="#{yCoordinateBean.y}" placeholder="(-5 ... 3)"/>
+                </div>
+
+                <!-- R input -->
+                <div class="input-group">
+                    <label for="r">Выберите R:</label>
+                    <h:selectOneRadio id="r"  value="#{rCoordinateBean.r}">
+                        <f:selectItem itemValue="1" itemLabel="1"/>
+                        <f:selectItem itemValue="1.5" itemLabel="1.5"/>
+                        <f:selectItem itemValue="2" itemLabel="2"/>
+                        <f:selectItem itemValue="2.5" itemLabel="2.5"/>
+                        <f:selectItem itemValue="3" itemLabel="3"/>
+
+                        <f:ajax event="change" render="graphScript"/>
+                    </h:selectOneRadio>
+                </div>
+
+                <!-- Submit -->
+                <h:commandButton value="Проверить" styleClass="button" actionListener="#{resultManagerBean.createResult(xCoordinateBean.x, yCoordinateBean.y, rCoordinateBean.r)}">
+                    <f:ajax execute="@form" render="resultsTable"/>
+                </h:commandButton>
+
+                <!-- Clear -->
+                <h:commandButton value="Очистить" styleClass="button" action="#{resultManagerBean.clearResults()}">
+                    <f:ajax execute="@form" render="resultsTable"/>
+                </h:commandButton>
+
+                <h:link value="Вернусться на страничку с часами" styleClass="styled-link" outcome="clock" />
+            </div>
+
+            <!-- Results Table -->
+            <div class="table">
+                <h:dataTable id="resultsTable" value="#{resultManagerBean.results}" var="res" border="1">
+                    <h:column>
+                        <f:facet name="header">X</f:facet>
+                        #{res.x}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Y</f:facet>
+                        #{res.y}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">R</f:facet>
+                        #{res.r}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Статус</f:facet>
+                        #{res.status}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Время</f:facet>
+                        #{res.now}
+                    </h:column>
+
+                </h:dataTable>
+            </div>
+
+        </div>
+    </h:form>
+
+    <!-- Footer -->
+    <footer>
+        <p>Разработано в рамках курса "Веб-программирование"</p>
+        <p>Университет ИТМО, осень 2024</p>
+        <img class="Logo" src="resources/win.gif" alt="win" width="20%"/>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="resources/script.js"></script>
+    <script src="resources/pointer.js"></script>
+
+</h:body>
+</html>

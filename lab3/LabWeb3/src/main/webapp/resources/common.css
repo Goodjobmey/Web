@@ -1,0 +1,26 @@
+:root{
+    --Text: FreeMono;
+
+    --NWhite: #f4f4f4;
+    --NBlack: #333;
+}
+
+header, footer {
+    background-color: var(--NBlack);
+    color: white;
+    text-align: center;
+    padding: 2%;
+    justify-content: center;
+    font-family: var(--Text);
+}
+
+body {
+    font-family: var(--Text);
+    background-color: var(--NWhite);
+    background-size: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
