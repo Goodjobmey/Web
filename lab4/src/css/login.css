@@ -1,0 +1,104 @@
+.login_container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+}
+
+.profile{
+    margin: 10%;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 0px 20px #00000027;
+    font-family: var(--Text);
+    text-align: center;
+}
+
+.login_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--Text);
+}
+
+.form_title {
+    margin-bottom: 20px;
+}
+
+.form_group {
+    margin: 12%;
+}
+
+.form_input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form {
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logout_button {
+    background: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.form_button{
+    background: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.form_button:hover,
+.form_reg:hover {
+    background: #555;
+}
+
+
+/* Стили для ноутбуков (от 1024px до 1440px) */
+@media (min-width: 1024px) {
+
+    .login_form {
+        height: 100vh;
+    }
+
+    .profile{
+        width: 400px;
+    }
+
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 767px) {
+    .login_form {
+        margin: 16%;
+    }
+
+    .profile{
+        width: 150px;
+    }
+
+    .form_title {
+        margin-bottom: 10px;
+    }
+
+}

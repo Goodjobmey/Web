@@ -1,0 +1,100 @@
+.area {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+}
+
+/* Стили для ноутбуков (от 1024px до 1440px) */
+@media (min-width: 1024px) {
+
+    .area {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2%;
+    }
+
+    .input-group, .graph, .clock {
+        justify-content: center;
+        align-items: center;
+        margin: 16px;
+        width: 400px;
+        padding: 32px;
+        border-radius: 10px;
+        box-shadow: 0 0px 20px #00000027;
+        font-family: var(--Text);
+    }
+
+    .graph {
+        width: 600px;
+        height: 600px;
+        text-align: center;
+        display: flex;
+    }
+
+    .button {
+        margin: 32px;
+    }
+
+    .clock {
+        text-align: center;
+        margin: 10%;
+    }
+
+    .time {
+        width: 200px;
+    }
+}
+
+/* Стили для телефона */
+@media (max-width: 767px) {
+    .area {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .graph {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        display: flex;
+    }
+
+    /* Общие стили для блоков */
+    .input-group, .graph, .clock {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 16px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        font-family: var(--Text);
+        background: white; /* Добавляем фон для лучшей видимости */
+        width: 90%;
+        max-width: 160px;
+        padding: 20px;
+    }
+
+    /* Кнопки */
+    .button {
+        margin: 16px;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    /* Часы */
+    .clock {
+        text-align: center;
+        margin: 5%;
+    }
+
+    .time {
+        width: 150px;
+    }
+}
